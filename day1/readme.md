@@ -5,7 +5,7 @@
 ---
 ## 什么是Vue.js
 
-+ Vue.js 是目前最火的一个前端框架，React是最流行的一个前端框架（React除了开发网站，还可以开发手机App， Vue语法也是可以用于进行手机App开发的，需要借助于Weex）
++ Vue.js 是目前最火的一个前端框架，React是最流行的一个前端框架（React除了开发网站，还可以开发手机App，Vue语法也是可以用于进行手机App开发的，需要借助于Weex）
 
 + Vue.js 是前端的**主流框架之一**，和Angular.js、React.js 一起，并成为前端三大主流框架！
 
@@ -99,17 +99,17 @@
 
 1. 直接使用指令`v-bind`
 2. 使用简化指令`:`
-3. 在绑定的时候，拼接绑定内容：`:title="btnTitle + ',这是追加的内容'"`
+3. 在绑定的时候，拼接绑定内容：`:title="mytitle + ',这是追加的内容'"`
 
 ```
 <body>
   <div id="app">
     <!-- v-bind: 是 Vue中，提供的用于绑定属性的指令 -->
-    <input type="button" value="按钮" v-bind:title="mytitle + '123'">
+    <input type="button" value="按钮" v-bind:title="mytitle + '这是追加的内容'">
     
     <!-- 注意： v-bind: 指令可以被简写为 :要绑定的属性 -->
     <!-- v-bind 中，可以写合法的JS表达式 -->
-    <input type="button" value="按钮" :title="mytitle + '123'">
+    <input type="button" value="按钮" :title="mytitle + '这是追加的内容'">
   </div>
   
   <script src="./lib/vue-2.4.0.js"></script>
@@ -336,7 +336,7 @@
 ```
 
 
-## 简易计算器案例
+### 简易计算器案例
 
 1. HTML 代码结构
 
@@ -396,8 +396,8 @@
   </script>
 ```
 
-## 在Vue中使用样式
-### 使用class样式
+### 在Vue中使用样式
+#### 使用class样式
 
 1. 数组
 2. 数组中使用三元表达式
@@ -455,7 +455,7 @@
 ```
 
 
-### 使用内联样式
+#### 使用内联样式
 
 1. 直接在元素上通过 `:style` 的形式，书写样式对象
 2. 将样式对象，定义到 `data` 中，并直接引用到 `:style` 中
@@ -486,7 +486,7 @@
 </body>
 ```
 
-## Vue指令之`v-for`和`key`属性
+### Vue指令之`v-for`和`key`属性
 
 1. 迭代数组
 ```
@@ -581,7 +581,7 @@
   </script>
 </body>
 ```
-### `v-for指令使用注意事项
+### `v-for`指令使用注意事项
 
 ```
  <div id="app">
@@ -636,7 +636,7 @@
 
 为了给 Vue 一个提示，**以便它能跟踪每个节点的身份，从而重用和重新排序现有元素**，你需要为每项提供一个唯一 key 属性。
 
-## Vue指令之`v-if`和`v-show`
+### Vue指令之`v-if`和`v-show`
 
 > 一般来说，v-if 有更高的切换消耗而 v-show 有更高的初始渲染消耗。因此，如果需要频繁切换 v-show 较好，如果在运行时条件不大可能改变 v-if 较好。
 
