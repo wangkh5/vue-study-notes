@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../lib/vue-2.4.0.js"></script>
+  <link rel="stylesheet" href="../lib/bootstrap-3.3.7.css">
+</head>
+
+<body>
+  <div id="app">
+    <table class="table table-bordered table-hover table-striped">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Ctime</th>
+          <th>Operation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="item in list" :key="item.id">
+          <td>{{ item.id }}</td>
+          <td v-text="item.name"></td>
+          <td>{{ item.ctime }}</td>
+          <td>
+            <!--需要阻止默认行为，否则删除成功后会自动刷新页面-->
+            <a href="" @click.prevent="del(item.id)">删除</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <script>
+    // 创建 Vue 实例，得到 ViewModel
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        id: '',
+        name: '',
+        keywords: '', // 搜索的关键字
+        list: [
+          { id: 1, name: '奔驰', ctime: new Date() },
+          { id: 2, name: '宝马', ctime: new Date() }
+        ]
+      },
+      methods: {
+        del(id) { // 根据Id删除数据
+          // 分析：
+          // 1. 如何根据Id，找到要删除这一项的索引
+          // 2. 如果找到索引了，直接调用 数组的 splice 方法
+
+          /*第一种实现方式*/
+          /* this.list.some((item, i) => {
+            if (item.id == id) {
+              this.list.splice(i, 1)
+              // 在 数组的 some 方法中，如果 return true，就会立即终止这个数组的后续循环
+              return true;
+            }
+          }) */
+
+          /*第二种实现方式*/
+          var index = this.list.findIndex(item => {
+            if (item.id == id) {
+              return true;
+            }
+          })
+          this.list.splice(index, 1)
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>
